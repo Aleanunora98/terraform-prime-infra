@@ -1,0 +1,4 @@
+# This file will help git to ignore any changes in the files below
+.terraform
+.terraform.lock.hcl
+.terraform.tfstate.backup
