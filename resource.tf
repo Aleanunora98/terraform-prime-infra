@@ -22,8 +22,8 @@ resource "aws_internet_gateway" "prime-igw" {
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet.html--this create a public subnet
 resource "aws_subnet" "prime-pub1" {
   vpc_id            = aws_vpc.prime-vpc.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  cidr_block        = var.prime-pub1-cidr
+  availability_zone = "var.prime_pub1-az"
 
   tags = {
     Name = "prime-pub1"
@@ -32,8 +32,8 @@ resource "aws_subnet" "prime-pub1" {
 #creation of public subnet 2
 resource "aws_subnet" "prime-pub2" {
   vpc_id            = aws_vpc.prime-vpc.id
-  cidr_block        = "10.0.2.0/24"
-  availability_zone = "us-east-1b"
+  cidr_block        = var.prime-pub2-cidr
+  availability_zone = "var.prime_pub2-az"
 
   tags = {
     Name = "prime-pub2"
@@ -73,8 +73,8 @@ resource "aws_route_table_association" "prime-pub2" {
 #creating a 2private subnet--home work--
 resource "aws_subnet" "prime-private1" {
   vpc_id            = aws_vpc.prime-vpc.id
-  cidr_block        = "10.0.3.0/24"
-  availability_zone = "us-east-1a"
+  cidr_block        = var.prime-private1-cidr
+  availability_zone = "prime-private-az"
 
   tags = {
     Name = "prime-private1"
@@ -83,8 +83,8 @@ resource "aws_subnet" "prime-private1" {
 
 resource "aws_subnet" "prime-private2" {
   vpc_id            = aws_vpc.prime-vpc.id
-  cidr_block        = "10.0.4.0/24"
-  availability_zone = "us-east-1b"
+  cidr_block        = var.prime-private2-cidr
+  availability_zone = "prime-private-az"
 
   tags = {
     Name = "prime-private2"
